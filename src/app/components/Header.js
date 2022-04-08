@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./Header.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import { IconButton } from "@mui/material";
+import { IconButton, Avatar } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import AppsIcon from '@mui/icons-material/Apps';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function Header() {
@@ -19,7 +21,15 @@ function Header() {
                 <input placeholder="Search mail" type='text' />
                 <ArrowDropDownIcon color="action"  />
             </div>
-			<div className={styles.header__right}></div>
+			<div className={styles.header__right}>
+				<IconButton>
+					<AppsIcon />
+				</IconButton>
+				<IconButton>
+					<NotificationsIcon />
+				</IconButton>
+                <Avatar />
+			</div>
 		</div>
 	);
 }
