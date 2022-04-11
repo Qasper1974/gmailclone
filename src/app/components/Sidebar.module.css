@@ -10,10 +10,13 @@
     padding: 15px;
     border-radius: 30px;
     box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.75);
-
-
 }
 
 .sidebar__add {
     font-size: large;
+}
+
+.sidebar__footer {
+    display: flex;
+    justify-content: center;
 }
