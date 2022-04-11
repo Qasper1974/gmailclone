@@ -1,0 +1,15 @@
+.sidebaroption {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #818181;
+    cursor: pointer;
+}
+
+.sidebaroption > p {
+    display: none;
+    font-weight: 300;
+}
