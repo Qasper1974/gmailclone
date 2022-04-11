@@ -32,8 +32,15 @@
 
 .sidebaroption:hover,
 .sidebaroption:hover > p,
-.sidebaroption:hover > h3 {
+.sidebaroption:hover > h3,
+.sidebar_active,
+.sidebar_active > p,
+.sidebar_active > h3 {
     background-color: #fcecec;
     color:#c04b37;
     font-weight: 800 !important;
+}
+
+.sidebar_active > p {
+display: inline;
 }
