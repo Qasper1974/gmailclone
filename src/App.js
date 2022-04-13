@@ -1,8 +1,11 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
+
 import Header from "./app/components/Header";
 import Sidebar from "./app/components/Sidebar";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Mail from './app/components/Mail';
+import EmailList from './app/components/EmailList';
 
 function App() {
 	return (
@@ -13,11 +16,11 @@ function App() {
 					<Sidebar />
 					<Switch>
 						<Route path="/mail">
-                            <Mail />
-                        </Route>
+							<Mail />
+						</Route>
 						<Route path="/">
-                            <EmailList />
-                        </Route>
+							<EmailList />
+						</Route>
 					</Switch>
 				</div>
 			</div>
