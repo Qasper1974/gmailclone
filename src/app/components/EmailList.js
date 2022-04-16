@@ -51,6 +51,9 @@ function EmailList() {
 				<Section Icon={People} title="Social" color="#1A73E8"  />
 				<Section Icon={LocalOffer} title="Promotions" color="green"  />
 			</div>
+            <div className="emaillist__list">
+                
+            </div>
 		</div>
 	);
 }
