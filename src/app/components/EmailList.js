@@ -14,6 +14,7 @@ import { Checkbox, IconButton } from "@mui/material";
 import React from "react";
 import styles from "./EmailList.module.css";
 import Section from "./Section";
+import EmailRow from "./EmailRow";
 
 function EmailList() {
 	return (
@@ -52,7 +53,11 @@ function EmailList() {
 				<Section Icon={LocalOffer} title="Promotions" color="green"  />
 			</div>
             <div className="emaillist__list">
-                
+                <EmailRow 
+                title='hallo!'
+                subject='greetings from Belgium'
+                description='Looking nice!'
+                time='10pm'/>
             </div>
 		</div>
 	);
