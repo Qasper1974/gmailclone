@@ -52,9 +52,26 @@ function Mail() {
 					</IconButton>
 				</div>
 				<div className={styles.mail__toolsright}>
-                <IconButton><UnfoldMore/></IconButton>
-                <IconButton><Print /></IconButton>
-                <IconButton><ExitToApp/></IconButton>
+					<IconButton>
+						<UnfoldMore />
+					</IconButton>
+					<IconButton>
+						<Print />
+					</IconButton>
+					<IconButton>
+						<ExitToApp />
+					</IconButton>
+				</div>
+			</div>
+			<div className={styles.mail__body}>
+				<div className={styles.mail__bodyheader}>
+					<h2>Subject</h2>
+					<LabelImportant className={styles.mail__important} />
+					<p>Title</p>
+					<p className={styles.mail__time}>10pm</p>
+				</div>
+                <div className={styles.mail__message}>
+                    <p>This is a message</p>
                 </div>
 			</div>
 		</div>
