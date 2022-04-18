@@ -20,20 +20,20 @@ function SendMail() {
 					name="to"
 					placeholder="To"
 					type="text"
-					{...register("to")}
+                {...register("to", {required: true})}
 				/>
 				<input
 					name="subject"
 					placeholder="Subject"
 					type="text"
-					{...register("subject")}
+					{...register("subject", {required: true})}
 				/>
 				<input
 					name="message"
 					placeholder="Message..."
 					type="text"
 					className={styles.sendmail__message}
-					{...register("message")}
+					{...register("message", {required: true})}
 				/>
 				<div className={styles.sendmail__options}>
 					<Button
