@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "../../features/mailSlice";
 import styles from "./SendMail.module.css";
+import { db } from "../firebase";
+import firebase from "firebase/compat/app";
 
 function SendMail() {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const {
 		register,
 		handleSubmit,
@@ -17,17 +19,26 @@ function SendMail() {
 
 	const onSubmit = (data) => {
 		console.log(data);
+		db.collection("emails").add({
+			to: data.to,
+			subject: data.subject,
+			message: data.message,
+			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+		});
+
+        dispatch(closeSendMessage());
 	};
 
 	return (
 		<div className={styles.sendmail}>
 			<div className={styles.sendmail__header}>
 				<h3>New Message</h3>
-				<Close 
-                onClick={()=>{
-                    dispatch(closeSendMessage());
-                }}
-                className={styles.sendmail__close} />
+				<Close
+					onClick={() => {
+						dispatch(closeSendMessage());
+					}}
+					className={styles.sendmail__close}
+				/>
 			</div>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<input
@@ -48,9 +59,7 @@ function SendMail() {
 					{...register("subject", { required: true })}
 				/>{" "}
 				{errors.subject && (
-					<p className={styles.sendmail__error}>
-						What is this message about?
-					</p>
+					<p className={styles.sendmail__error}>What is this message about?</p>
 				)}
 				<input
 					name="message"
