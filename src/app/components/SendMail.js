@@ -7,6 +7,7 @@ import { closeSendMessage } from "../../features/mailSlice";
 import styles from "./SendMail.module.css";
 import { db } from "../firebase";
 import firebase from "firebase/compat/app";
+import { useHistory } from "react-router-dom";
 
 function SendMail() {
 	const dispatch = useDispatch();
@@ -17,6 +18,8 @@ function SendMail() {
 		formState: { errors },
 	} = useForm();
 
+    const history = useHistory();
+
 	const onSubmit = (data) => {
 		console.log(data);
 		db.collection("emails").add({
@@ -26,6 +29,7 @@ function SendMail() {
 			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 		});
         dispatch(closeSendMessage());
+        history.push('/');
 	};
 
 	return (
