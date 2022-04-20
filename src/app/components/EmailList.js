@@ -70,14 +70,14 @@ function EmailList() {
 				<Section Icon={LocalOffer} title="Promotions" color="green" />
 			</div>
 			<div className={styles.emaillist__list}>
-				{emails.map(({id, data: {to, title, message, timestamp}}) => {
+				{emails.map(({id, data: {to, subject, message, timestamp}}) => {
 					return (
 						<EmailRow
 							key={id}
 							title={to}
-							subject={title}
+							subject={subject}
 							description={message}
-							time={new Date(timestamp?.seconds * 1000).toUTCString()}
+							time={new Date(timestamp?.seconds * 1000).toString()}
 						/>
 					);
 				})}
