@@ -11,12 +11,29 @@ import {
 import InboxIcon from "@mui/icons-material/Inbox";
 import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import { Checkbox, IconButton } from "@mui/material";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./EmailList.module.css";
 import Section from "./Section";
 import EmailRow from "./EmailRow";
 
+import { db } from "../firebase";
+
 function EmailList() {
+	const [emails, setEmails] = useState([]);
+
+	useEffect(() => {
+		db.collection("emails")
+			.orderBy("timestamp", "desc")
+			.onSnapshot((snapshot) =>
+				setEmails(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						data: doc.data(),
+					}))
+				)
+			);
+	}, []);
+
 	return (
 		<div className={styles.emaillist}>
 			<div className={styles.emaillist__settings}>
@@ -49,16 +66,22 @@ function EmailList() {
 			</div>
 			<div className={styles.emaillist__sections}>
 				<Section Icon={InboxIcon} title="Primary" color="red" selected />
-				<Section Icon={People} title="Social" color="#1A73E8"  />
-				<Section Icon={LocalOffer} title="Promotions" color="green"  />
+				<Section Icon={People} title="Social" color="#1A73E8" />
+				<Section Icon={LocalOffer} title="Promotions" color="green" />
 			</div>
-            <div className="emaillist__list">
-                <EmailRow 
-                title='hallo!'
-                subject='greetings from Belgium'
-                description='Looking nice!'
-                time='10pm'/>
-            </div>
+			<div className={styles.emaillist__list}>
+				{emails.map((email) => {
+					return (
+						<EmailRow
+							key={email.id}
+							title={email.data.to}
+							subject={email.data.title}
+							description={email.data.message}
+							time={new Date(email.data.timestamp.seconds * 1000).toUTCString()}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
