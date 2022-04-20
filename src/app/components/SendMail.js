@@ -25,7 +25,6 @@ function SendMail() {
 			message: data.message,
 			timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 		});
-
         dispatch(closeSendMessage());
 	};
 
