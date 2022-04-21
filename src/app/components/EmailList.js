@@ -77,7 +77,7 @@ function EmailList() {
 							title={to}
 							subject={subject}
 							description={message}
-							time={new Date(timestamp?.seconds * 1000).toString()}
+							time={new Date(timestamp?.seconds * 1000).toLocaleString('en-US',{weekday: 'short', day: 'numeric',month: 'short',hour: 'numeric',minute: 'numeric'})}
 						/>
 					);
 				})}
